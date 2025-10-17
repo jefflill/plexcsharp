@@ -12,6 +12,7 @@ namespace LukeHagar.PlexAPI.SDK.Utils
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
     public interface ISpeakeasyHttpClient
@@ -45,6 +46,8 @@ namespace LukeHagar.PlexAPI.SDK.Utils
         public SpeakeasyHttpClient()
         {
             httpClient = new System.Net.Http.HttpClient();
+
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public virtual async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
